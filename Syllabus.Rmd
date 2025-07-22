@@ -1,0 +1,263 @@
+---
+author: "Sam Gifford"
+date: '2025-01-13'
+output:
+  pdf_document:
+    keep_tex: yes
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css, echo=FALSE}
+h1, h2, h3 {
+  text-align: center;
+}
+
+h4, h5 {
+  font-weight: bold
+}
+```
+
+
+## \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \ \ \ \ \ \ \ \ \ \ University of Illinois at Chicago
+
+## \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ **Econ 270: Statistics For Economics**
+
+### \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  Spring 2025 - CRN 16815 - 4 hours, on Campus
+
+### Main Section: 
+
+* **Monday/Wednesday/Friday 3:00-3:50 PM, Behavioral Science Building 140**
+
+### Discussion Sections: 
+
+* Monday 1:00-1:50, Lincoln Hall 300
+* Wednesday 1:00-1:50 Lincoln Hall 300
+* Friday 1:00-1:50 Lincoln Hall 300
+
+ | | | 
+---- | ---- | ---- | ---- | ----
+Instructor: | Sam Gifford | TA: | Mikita Zhylinski
+email: | sgiffor2\@uic.edu | | mzhyli2\@uic.edu
+Office: | UH 819 |  | UH 817
+Student Drop in Office Hours: | 2:00-3:50 PM M/W/F and by appointment | | By appointment
+
+#### I Overview
+
+##### Objectives
+
+This course provides a detailed introduction to statistical concepts and their applications in economics. Topics covered in the course include, but are not limited to, descriptive statistics, probability and common distributions, statistical inference, and simple linear regression. The primary objective of this course is to familiarize students with the basic statistical concepts required for more advanced courses such as econometrics. By the end of the course, students are expected to be able to:
+
+* Summarize data using statistical measures such as the mean and standard deviation
+* Calculate probabilities, including conditional probabilities, using common distributions
+* Conduct basic statistical inference, including an understanding of sampling distributions
+* Perform hypothesis tests and understand their significance
+
+##### Prerequisites
+
+* Math 121
+
+#### II Resources
+
+##### Textbook
+
+Cetinkaya-Rundel, M., Diez, D., & Barr, C. (2019). *OpenIntro Statistics*. (Fourth Edition ed.) OpenIntro, Inc. https://www.openintro.org/book/os/
+
+From the authors: This book may be downloaded as a free PDF at openintro.org/book/os. This textbook is also
+available under a Creative Commons license, with the source files hosted on Github.
+
+If you choose to download this from their official website, they will prompt you for an optional donation. You may choose \$0 and download it without any payment methods required. 
+
+##### Course Website
+
+Blackboard (uic.blackboard.com) will be used as the primary course website and all course content will be shared and made available in a timely manner. Homework will be turned in via Blackboard and class announcements will be made on blackboard with a corresponding email being sent out – please make sure to keep a track of all announcements and updates. Please notify me immediately if you are unable to access Blackboard since this is essential for the course.
+
+#### III Evaluation
+
+##### Exams
+
+There will be three exams during the semester: two midterms and a final exam. Each exam is worth 200 points and will consist primarily of free-response questions. The final exam will be cumulative. Exams will be held in-person. Please refer to the tentative schedule at the end for exam dates.
+
+##### Quizzes
+
+Short quizzes will be administered weekly during the discussion section. Quizzes may be resubmitted on Blackboard with corrections within two weeks of their original date to receive credit for up to half of any missed points.
+
+##### Homework
+
+The core of this course uses math, and as such routine practice is required in order to understand the material. For this reason, weekly homework assignments will be provided for practice. The homework will remain ungraded, as I have found that graded homework assignments incentive the use of low-effort AI submissions which defeats the point of the assignments. It is to your benefit to complete them anyway, as they provide practice for quizzes and exams (which will now carry a larger weight).
+
+##### Class Participation
+
+As an introductory statistics course, this class will start relatively easy and slowly ramp into increasingly difficult topics. The later topics in this course are central to econometrics, which this class is a prerequisite for. In an attempt to keep students engaged and prevent them from falling behind, iClicker will be used in class as a means to test understanding throughout the semester.
+
+Attendance will be recorded and short, graded review questions or quizzes will be frequently provided via iClickers during the main section in order to assess overall class understanding. Due to the limitations of iClickers and the analytic nature of the course, participation in the class outside of iclicker responses is also required in order to engage with the material. For more involved questions I may ask you to work in small groups to come up with answers to a question. Each day of class will be worth the same number of points regardless of the amount of participation required.
+
+Your participation grade will be based solely on your performance on graded iClicker questions in class. With that said, more participation points will be available than the maximum number of points that can be awarded, which will allow for you to miss some questions and still receive the maximum number of participation points. The system is intended to award full points to students who put effort into the class, but not for students who are routinely absent or who attend every class but do not pay attention. Students may not receive more than 100\% on their participation subtotal.
+
+A smartphone or laptop can be used to answer iClicker polls which can be registered using the link https://join.iclicker.com/MQPO which will also be posted on blackboard.
+
+\newpage
+
+##### Grading Summary
+
+The total number of quizzes and iClicker points may deviate slightly by the end of the semester. Points will be reweighted at the end of the semester to match the Total Points and Percentage columns in the event that these deviate.
+
+\
+
+
+ | | | 
+ ---- | ---- | ---- | ---- |
+Assessment | Points/Assignment | Total Points | Percentage
+3 Exams | 200 points each | 600 points | 60\%
+Weekly Quizzes | \~ 13 points each | 200 points | 20\%
+Class Participation | \~ 5 points/day | 200 points | 20\%
+**Total** | - | **1000 points** | **100\%**
+
+##### Grading Scale
+
+* A: 900+ points
+* B: 800-899 points
+* C: 700-799 points
+* D: 600-699 points
+* F: <600 points
+
+#### IV Course Policies
+
+##### Discussion Sections
+
+Discussion sessions are held once a week to review material & practice problems related to the chapters reviewed in lecture. You will predominantly go over practice problems during the discussion sections and use this time to take quizzes, but these are a great opportunity to ask more detailed questions on the material as the teaching assistant has a much different background from me and may have better insights into some particular topics. If you are unable to attend your designated discussion section in a given week due to time conflicts, feel free to attend one of the other two sections if they are more convenient. Since quizzes are administered during the discussion sections, these are effectively a required part of the course. 
+
+##### Student Drop-in Office Hours
+
+I will be available to answer questions before class from 2:00-2:50. If these times do not work for you, you may also feel free to schedule another time to discuss any class related materials. My UIC calendar is publicly visible and should be up to date so that you can check which times work for me ahead of time. On most weeks I will not be available Monday, Wednesday, or Friday before 10:00 AM, Wednesday from noon to 1:00 PM, Friday from 11:00 AM-12:30 PM, or any day after 5:00 PM. 
+
+##### Late Work/Make-Up Policy
+
+You must attend class to receive the participation points for a given day, with no make-ups allowed. More points will be available than the maximum possible allowed, which effectively allows for a blanket number of unexcused absences throughout the semester. If circumstances prevent you from attending class on a regular basis, please meet with me to discuss options.
+
+Quizzes similarly must be completed in discussion section. If you are unable to make it to a discussion section, you may attend a different section if your schedule allows. If you run into a scheduling conflict, please contact me ahead of time so that the quiz may be administered at an alternative time/place. Make-up quizzes are not allowed if advanced notice is not provided, unless a documented excuse indicating that an unforseeable event occurred is provided. An example would include a doctor's note for a medical emergency. Unacceptable examples include court dates or sports games (in such an event you should schedule the make-up quiz in advance), or family vacations.
+
+Graded quizzes will be available the following week. You may resubmit a photo/scan of your quiz within two weeks of the original quiz date with corrections to receive credit for up to half of any missed points on the quiz. It is the student's responsibility to retrieve the quiz in a timely manner - I will bring graded quizzes to class and office hours for students who want them back, but may not always have time to hand them back to everyone during normal class time.
+
+##### Regrading Policy
+
+Any issues with grading that require a regrade must be submitted within 1 week of the assignment being returned; no assignments will be regraded after this period (aside from the quiz policy in the prior section). Please send regrade emails directly to me and I will forward them to the teaching assistant when relevant.
+
+##### Academic Integrity
+
+Academic dishonesty (cheating) in this course is unacceptable. Any student who is found to have engaged in academically dishonest behaviors in this course will face the following consequences, and may incur more severe penalties depending on the nature of the event:
+
+* Zero score on the assessment where cheating occurred
+* Filing of an Academic Integrity report
+* Lowering of the final course grade by one full letter grade
+
+For a complete list of UIC’s Academic Integrity standards, please reference section IV.A. of the Student Disciplinary Policy.
+
+##### Generative AI Policy
+
+AI generated answers will not be graded and will receive a score of 0 for the specific portion of the answer for which AI was used. I put a great deal of effort to provide meaningful feedback on assignments, and answers pasted from tools like ChatGPT render this feedback meaningless. For reference, ChatGPT does not do well with math questions, and is incorrect more often than it is correct for statistics/analytics questions. You may find ChatGPT to be a useful tool to help you think through what you may have missed when answering a question, but I ask that you word answers in your own way (and fix the false statements it provides!). AI output is easily detected, even without the use of an online detector due to its formulaic structure and high degree of fluff, which creates low-quality answers.
+
+##### Use of Electronics
+
+Smart phones or laptops may be required for portions of the course, but please refrain from any disruptive behavior on such devices. These devices will not be allowed during exams
+
+##### Communication
+
+You are welcome to email me throughout the semester for course-related questions or concerns. In order to keep everything organized and professional please observe the following communication practices:
+
+* All emails must be sent from your UIC email account.
+* Begin all emails with the subject line “ECON 270:" followed by some additional meaningful subject line information. Failure to do so may result in your email being missed.
+* Please provide enough context in your email for your question to be addressed without further follow-up
+* I answer emails within 1 business day. I tend to sleep early, so emails sent in the evening are unlikely to receive a reply until the next morning. Similarly, weekends and holidays are not considered part of the business day. As such please be proactive when sending out emails so that you do not need an immediate response.
+* While I am happy to answer any questions you have, please show that you have put in some effort and be specific about your questions.
+* Don't send me AI generated emails. They will annoy me.
+
+##### Additional Resources
+
+* ECON Club tutoring provides free tutoring to students every semester. Please check their website for more information on the Fall semester schedule.
+* UIC Counseling Center provides resources to students who feel overwhelmed and/or are dealing with stress and anxiety. Please do not hesitate to reach out to them.
+
+##### Disability Accommodation
+
+Students with disabilities are welcome to request accommodations in completing the course. To request accommodations, please contact the Disability Resource Center (DRC). They will work with you to determine the necessary accommodations and provide you with an official Letter of Accommodation, which you can then send to me. If you already have a Letter of Accommodation, please email it to me at your earliest convenience.
+
+##### Religious Observances
+
+If you wish to observe a religious holiday, please notify me by the tenth day of the semester of the date when you will be absent unless the religious holiday is observed on or before the tenth day of the semester. In such cases, please notify me at least five days in advance of the date when you will be absent. I will make every reasonable effort to honor the request, not penalize you for missing the class, and if an examination or project is due during the absence, schedule a make-up exam for you.
+
+##### Pregnancy Accommodations
+
+Following campus policy, pregnant students have rights under Title IX. To request pregnancy-related accommodations, contact the Title IX Coordinator at titleix@uic.edu or 312-996-8670.
+
+##### Community Agreement/Classroom Conduct Policy
+
+* Be present by turning off cell phones and removing yourself from other distractions.
+* Be respectful of the learning space and community. For example, no side conversations or
+unnecessary disruptions.
+* Use preferred names and gender pronouns.
+* Assume goodwill in all interactions, even in disagreement.
+* Facilitate dialogue and value the free and safe exchange of ideas.
+* Try not to make assumptions, have an open mind, seek to understand, and not judge.
+* Approach discussion, challenges, and different perspectives as an opportunity to “think out
+loud,” learn something new, and understand the concepts or experiences that guide other
+people’s thinking.
+* Debate the concepts, not the person.
+* Be gracious and open to change when your ideas, arguments, or positions do not work or
+are proven wrong.
+* Be willing to work together and share helpful study strategies.
+* Be mindful of one another’s privacy, and do not invite outsiders into our classroom.
+
+\newpage
+
+#### V Tentative Schedule
+
+```{r, echo=FALSE}
+library(data.table)
+week <- c("Weeks 1-3","Weeks 4,5", "Weeks 6,7", "Weeks 8-10","Week 11","Weeks 12-14", "Weeks 15,16", "Final Exam Week")
+dates <- c("Jan 13 - Jan 31","Feb 3 - Feb 14","Feb 17-28","Mar 3 - Mar 21","Mar 24 - Mar 28","Mar 31 - Apr 18","Apr 21- May 2", "May 5 - May 9")
+topics <- c(
+  "Data and Descriptive Statistics",
+  "Probability",
+  "Common Distributions",
+  "Statistical Inference",
+  "Spring Break",
+  "Hypothesis Testing",
+  "Linear Regression",
+  ""
+)
+chapter <- c(
+  "Ch 1,2",
+  "Ch 3",
+  "Ch 4",
+  "Ch 5,6,7",
+  "",
+  "Ch 5,6,7",
+  "Ch 8",
+  ""
+)
+pset <- c(
+  "No Class Monday, January 20th",
+  "Exam 1: Friday, February 14th",
+  "",
+  "Exam 2: Friday, March 21st",
+  "",
+  "",
+  "",
+  ""
+)
+dt <- data.table(Week=week,Dates=dates,Topic=topics,Chapter=chapter,`Important Dates`=pset)
+knitr::kable(dt)
+```
+
+##### Other Important Dates
+
+* Friday January 24th: Last day to drop with no W
+* Friday March 21st: Last day to drop course and receive W
+
+##### Disclaimer
+
+This syllabus is intended to give the student guidance on what may be covered during the semester and will be followed as closely as possible. However, as the instructor, I reserve the right to modify, supplement, and make changes as course needs arise. I will communicate such changes in advance through in-class announcements and in writing via Blackboard Announcements.
