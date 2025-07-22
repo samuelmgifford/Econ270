@@ -1,0 +1,163 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+knitr::opts_chunk$set(comment = "")
+```
+
+## Econ 270 Homework 4
+
+## Sampling Distributions
+
+These questions are all pretty solid
+
+Book Questions: 5.3, 5.4, 5.5, 5.6
+
+5.4
+
+### a
+
+All US adults
+
+### b
+
+The proportion of the population who cannot pay for an unexpected \$400 expense
+
+### c
+
+$\frac{322}{765}=0.4209$
+
+### d
+
+The standard error (the standard deviation of $\hat p$ in this case, i.e. $\sigma_{\hat p}$)
+
+### e
+
+$se(\hat p)=\sqrt{\frac{\hat p(1-\hat p)}{n}}=.01785$ ($\hat p=.4209, n=765$)
+
+### f
+
+This question is implicitly asking the probability of observing this data under the null hypothesis that p=.5. If we used the values calculated above, then $0.5$ is $\frac{.5-.4209}{.01785}=4.43$ standard errors above the point estimate. This is an extremely rare event (1 in 200000 if we use software to calculate this), so this should be considered a surprising event.
+
+Note that under a more standard hypothesis testing setup we would use a null of $p=.5$ (Null Hypothesis Significance Test), which would then produce a slightly different standard error of $\sqrt{\frac{.5(1-.5)}{765}}=.0181$. Since we know exactly what p is in this scenario, we don't need to use the data to compute the standard error, resulting in this difference (we know the exact standard error without looking at the data). This would mean that our point estimate of $.4209$ is $\frac{.4209-.5}{.0181}$, or 4.21 standard errors below the mean. This produces a slightly more likely 1 in 80000 chance of occurring.
+
+We could also do something a bit more subtle and treat this as a dataset with 765 observation, each with a binary indicator (1 if they can make a \$400 payment and 0 if they can't). In this case $\bar x=.4209$ as before, but we calculate $s=\sqrt{\frac{n}{n-1}[\frac{1}{n}\sum x_i^2-(\frac{1}{n}\sum x_i)^2]}=.494$ so that $se(\bar x)=\frac{.494}{\sqrt n}=.01786$. This is a tiny fraction higher than what we calculated the initial standard error (by a factor of $\sqrt{\frac{n}{n-1}}$), and occurs because we are no longer assuming that the distribution follows a binomial distribution, so we lose a degree of freedom in the process (this is a fully nonparameteric approach). This will be the general approach we take when not using proportions of the population, so that instead of being given $p$ you'll be given $\bar x$ and $s$.
+
+The difference between these approaches is minor and isn't important (you'll almost always get nearly identical answers), but just for completeness: the third approach makes no assumptions about the underlying data, and simply calculates the mean and standard deviation as-is, with a slight adjustment to the standard deviation to make the estimate unbiased. This, and all other calculations, still relies on independence of observations. The first estimate gains a small amount of precision by assuming that the distribution is a binomial distribution rather than having to estimate this from the data. The second approach directly assumes the exact value of the parameter $p=.5$ rather than calculating it from the data. In general, the more information we can assume in the problem, the more accurate our answer will be. In this case, the 2nd calculation is the most correct given the question setup, while the third is the least correct (but also generalizes to more scenarios). This is a fairly standard scenario that arises in statistics, where we often have many choices of assumptions that may affect our calculations, and different researchers can reasonably come to different conclusions. These are worth knowing, since it is often the case that the software that we use to calculation statistics may make subtle default assumptions that are different from our base understanding, so two people using different software may end up with different answers and not know why. For reference, the book calculates these problems using the first approach, and is known as a confidence-interval based approach, or a Wald-type test.
+
+For this class, any of these three approaches will be marked as fully correct. It's also worth noting that in this question we're asking for whether the individual would be 'surprised', to which these calculations do not directly answer the question. If the individual believes that p is *exactly* 0.5 then they would indeed be surprised, but a more reasonable person would think that p is *approximately* 0.5, e.g. maybe they think p is $0.5\pm 0.05$. This can be made more precise under a Bayesian approach, but without additional information we can't answer this part of the question, so you can just plug-and-chug and make a conclusion off of that (unless I explicitly ask about you to explain your answer in a question).
+
+### g
+
+This is asking for the standard error when p=.4, which is $\sqrt{\frac{.4(1-.4)}{765}}=.0177$. In general this won't change much (as you can see from my answer above) unless you have a proportion very close to 0 or 1. To see this, you can note that $\frac{\partial \sigma_{\hat p}}{\partial p}=\frac{\partial}{\partial p}(\frac{p-p^2}{n})^{.5}=.5(\frac{p-p^2}{n})^{-.5}(\frac{1-2p}{n})=\frac{1-2p}{2n\sqrt{\frac{p(1-p)}{n}}}$. Note that when p=.5 this value is 0, meaning that small changes will have very small effects on the standard error (but that there is an asymptote at p=0 and p=1 indicating rapid changes at those poles)
+
+5.6
+
+### a
+
+The sampling distribution (of the sampling proportion)
+
+### b
+
+Symmetric by the central limit theorem. As long as samples are drawn independently, then individuals drawn from the tails will tend to averaged against others towards the center of the distribution when n is large.
+
+### c
+
+This is asking for the standard error $\sqrt{\frac{.16(1-.16)}{40}}=.058$
+
+### d
+
+The standard error
+
+### e
+
+We can directly recalculate the standard error, or we can note that the ratio must be $\sqrt{\frac{40}{90}}=\frac{2}{3}$ of the original value. Either way we get a new standard error $.0386$
+
+## Confidence Intervals
+
+5.9 and 5.11 are good conceptual questions to check, 5.13 and 5.14 are good computational questions
+
+5.7, 5.8, 5.9, 5.10, 5.11, 5.13 (b,c), 5.14 , 5.28
+
+5.8
+
+$.52 \pm 2.576 * .024=(.458,.582)$/ We get 2.576 from $z_{.995}$, the value in a standard normal table where 99.5\% of the data is to the left of the value (i.e. we chop off the top and bottom 0.5\% of the data to get at the middle 99\%). This is calculated using qnorm(.995) in R.
+
+The correction interpretation is that this process of constructing the confidence interval produces an interval that contains the true proportion of individuals who get their news from twitter in 99\% of all such intervals. We are 99\% confident that the true proportion of twitter users is between 45.8\% and 58.2\% in this sense. This *approximately* means that there is a 99\% that the true percentage of individuals who get their news from twitter is between 45.8 and 58.2 percent (though this is technically only true before we measure the interval unless we invoke a bayesian perspective). The approximate answer will be marked fully correct in this class.
+
+5.10
+
+### a
+
+False. Note that 52\% is less than one standard error from the null hypothesis of 50\%, so we definitely know that p>.01. To calculate this formally, this has a z value of $\frac{.5-.52}{.024}=-.833$. Here we want the probability that less than we would observe a value at least as extreme as this ($z<-.83$) conditional on our assumptions, which is $\Phi(-.83)=.203>.01$. Note that this question is slightly misspecified for a hypothesis test (see my answer to 5.4f), but we would need the sample size in order to do this properly, and it wouldn't change the resulting p value by much.
+
+Here we calculate $P(\hat p<.5 | p=.52)$, which is admittedly a bit odd.
+
+### b
+
+No!!! 
+
+### c
+
+No - the standard error decreases as n increases
+
+### d
+
+Of course not. 90\% confidence interval is $\hat p \pm 1.645 se(\hat p)$ vs $\hat p \pm 2.576 se(\hat p)$ for a 99\% confidence interval
+
+5.14
+
+$\hat p=\frac{142}{603}=.235, se(\hat p) = \sqrt{\frac{\hat p(1-\hat p)}{603}}=.017$
+
+$CI_{.95} = \hat p \pm z_{.975} se(\hat p) = .235 \pm 1.96(.017)=(.202,.269)$
+
+5.28
+
+$\hat p = .42, se(\hat p) = \sqrt{\frac{.42(1-.42)}{1000}}=.0156$
+
+$CI_{.99}=\hat p \pm z_{.995} se(\hat p) = .42 \pm 2.576(.0156) = (.3758,.4602)$
+
+## Hypothesis Testing
+
+5.22 is a good representative easy question. 5.25, 5.29, 5.30, and 5.35 are good conceptual questions
+
+5.15, 5.16, 5.17 (you should immediately spot several catastrophic issues), 5.22 , 5.23 (this is moderately hard), 5.25, 5.29, 5.30, 5.35
+
+5.16
+
+This won't be on this exam, but:
+
+### a
+
+$H_0: \mu=1100, H_1: \mu\neq 1100$ where $\mu$ is the average number of calories consumed in restaurants in california after the law change. In other words, did average caloric consumption at restaurants change following the implementation of the law? Note that this is very different from "did the law result in people consuming a different amount of calories at restaurants" (you'll cover this in depth in econ 300 if you take it)
+
+### b
+
+$H_0: p=.7, H_1: p\neq .7$. This is asking whether the rate of alcohol consumption differs from the national average in Wisconsin. 
+
+5.22
+
+Using the book's preferred approach, we calculate $\hat p=\frac{289}{400}=.7225, se(\hat p)=\sqrt{\frac{\hat p(1-\hat p)}{400}}=.0224$. The critical value is $\frac{\hat p -.5}{se(\hat p)}=9.94$. Since this is two tailed, we want $P(z>9.94\cup z <-9.94)$. Either way, this is going to be a p-value of 0, so we reject the null hypothesis (the percent of students not getting enough sleep is statistically different from 50 percent).
+
+Using the null hypothesis significance testing approach everything would be the same, but the standard erorr would be $\sqrt{\frac{.5(1-.5)}{400}}=.025$. This changes the z-value to 8.9, and the p-value remains 0.
+
+5.30
+
+## a
+
+True - the 99\% confidence interval is wider and centered at the same point
+
+## b
+
+False - $\alpha$ is the type I error rate. decreasing $\alpha$ decreases the type I error rate, and increases the type II error rate
+
+## c
+
+No!!! We can't reject that the true proportion is 0.5, but it's also likely very reasonable that the true proportion is some value 'close' to 0.5. Depending on our specific setup, it may actually be much more likely that, say, $p=.51$, but we can't reject that $p=0.5$. In hypothesis testing we have a strong bias towards our null hypothesis, which is why this distinction arises.
+
+## d
+
+Yes - this is highly relevant to econometrics. 

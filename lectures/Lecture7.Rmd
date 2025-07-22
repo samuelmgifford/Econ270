@@ -1,0 +1,381 @@
+---
+title: "Econ 270 Lecture 7"
+author: "Sam Gifford"
+date: "2025-03-03"
+output:
+  beamer_presentation: default
+  powerpoint_presentation: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+knitr::opts_chunk$set(comment = "")
+```
+
+## Statistical Inference
+
+* "The job of science and the scientific method is to show whether a hypothesis is WRONG. That's it." - Karl Popper
+* Statistical inference is well-suited to test certain hypotheses given skepticism against the status quo
+* Statistical inference is much worse at making educated predictions or solving business problems
+
+## Populations vs Samples
+
+* We often have information from a subset of individuals (a **sample**) that we want to generalize to an entire **population**
+* Generally we want to know a specific value from this population, known as a **parameter**
+   * Often the mean ($\mu$), proportion having some characteristic ($p$), variance ($\sigma^2$), or correlation $\rho$
+* We label the estimate from our sample with a hat. This is called a **statistic**, e.g. $\hat \mu$ vs $\mu$
+
+## Statistics as the inverse of probability
+
+* In probability, our parameters are known but not our data
+    * We have a coin with $n=3,p=.5$ and want to calculate the probability of observing the data $H,H,T$
+* In statistics, our data is known but our parameters are not
+    * We observe $H,H,T$ and want to estimate p
+    * This is mathematically impossible! But with enough data we can make educated guesses and rule out certain possibilities
+
+## Defining the Sampling distribution
+
+* Let X be the population we're sampling from. It can have any arbitrary distribution
+* Take independent samples from X, labeled $X_1, X_2, ... , X_n$'
+* We are often interested in the mean: $\bar X = \frac{X_1+X_2+...+X_n}{n}$
+    * $\bar X$ is our sampling distribution
+    * (We can also have sampling distributions like $max(X)$ or $var(X)$)
+* What does the sampling distribution look like?
+    
+## Sampling Distribution Mean
+
+* What is $E[\bar X]$?. Note that this is the average of an average
+* $E[\bar x] = E[\frac{X_1+X_2+...+X_n}{n}]$
+    * = $\frac{1}{n}(E[X_1]+E[X_2]+...+E[X_n])$
+    * = $\frac{1}{n}(nE[X]) = E[X]$
+* Not very surprising, but also confusing!
+
+## Sampling Distribution Variance
+
+* What is $var(\bar X)$?
+* $var(\bar x) = var(\frac{X_1+X_2+...+X_n}{n})$
+    * $=\frac{1}{n^2}(var(X_1)+var(X_2)+...+var(X_n))$
+    * $=\frac{1}{n^2}(n \sigma^2)) = \frac{\sigma^2}{n}$
+    
+## Parameters vs Statistics
+
+* We now have several means and variances that we need to keep straight
+* Given a population distribution X, we have $\mu_X$ and $\sigma_X$. Sometimes these are just labeled $\mu$ and $\sigma$
+* If our sampling distribution is a mean, we also have $\mu_{\bar X}$ and $\sigma_{\bar X}$
+   * These are sometimes just called $\hat\mu$ and $\hat\sigma$
+* Note that on average $\mu_x=\mu_{\bar x}$, but $\sigma_X \neq \sigma_{\bar X}$
+    * Also note that $\mu_X \neq \mu_{\bar X}$, only that $E[\mu_X]=E[\mu_{\bar X}]$!
+
+## Sampling Distribution
+
+* Given the underlying population mean and standard deviation we know the mean and standard deviation of the sampling distribution. But what is its underlying distribution?
+* It's a nightmare to calculate (the calculation is even suggestively called a convolution)
+
+## Central Limit Theorem
+
+* But if we have **independent, identically distributed** random variables with finite variance, then the mean of these approaches a normal distribution
+   * In practice when $n=30$ we can approximate with a normal distribution as long as we have a **simple random sample**
+
+## Sampling Distributions
+
+https://mcfortran.shinyapps.io/sampling/
+
+## Calculating a sampling distribution
+
+* $\frac{2}{3}$ of students in a classroom are econ majors. You randomly sample 100 students and calculate the percent of students that are econ majors. Calculate the probability that your sample has between 60 and 70 percent econ majors
+
+## Calculating a sampling distribution
+
+* Suppose we didn't know $\frac{2}{3}$ of students were econ majors to begin with, but our sample had 63\% econ majors. We want to estimate the probability that we'd get between 60 and 70 percent econ majors if we resampled from the population. How does this question differ from the first?
+
+## Sampling Distribution Visualization
+
+* https://mcfortran.shinyapps.io/SamplingDistribution/
+* https://mcfortran.shinyapps.io/ConfidenceInterval/
+
+## Terminology test
+
+* Identify all of the random variables in the previous two questions:
+
+* The population mean
+* The sample mean
+* The sample size
+* The population standard deviation
+* The sample standard deviation
+
+## Terminology Test
+
+You randomly select 10 students from a class of 100 and calculate their average grade, $\bar x=80$. How does this relate to this sampling distribution of X?
+
+* $\bar x$ is the sampling distribution of X
+* $\bar x$ is a random draw from the sampling distribution of X
+* $\bar x$ is 10 random draws from the sampling distribution of X
+* $\bar x$ is 100 random draws from the sampling distribution of X
+
+## Terminology Test
+
+The sampling distribution of X has distribution $\bar X \sim N(10,1)$. What can be inferred about $X$?
+
+* $X\sim N(10,1)$
+* $X \sim N(10, \sigma\sqrt n)$
+* $E[X]=10$
+* $\mu_X=10$
+* $\sigma_X=1$
+
+## Terminology Test
+
+The sampling distribution of X has distribution $\bar X \sim N(10,1)$. What can be inferred about $\mu_X$?
+
+* $\mu_X=10$
+* $\mu_X \sim N(10,1)$
+* $\mu_X$ is a random variable with $E[\mu_X]=10$
+* $E[\sigma_X]=1$
+
+## Terminology Test
+
+Let X be the distribution of grades in a classroom, and let $\bar X$ be the sampling distribution of the mean when $n=5$. You randomly select 5 students from a class of 100 and calculate their average grade. The average grade of the 5 students is 80, which you label as $\bar x$. Which of the following are true
+
+## Terminology Test
+
+* $\mu_X=80$
+* $\bar X =80$
+* $\bar x = 80$
+* $E[\bar X] = 80$
+* $\mu_X \sim N(80,\sigma^2)$
+
+## Terminology Test
+
+Let X be the distribution of grades in a classroom, and let $\bar X$ be the sampling distribution of the mean when n is large. Which of the following are true:
+
+* $\mu_X=\mu_{\bar X}$
+* $\sigma_X = \sigma_{\bar X}$
+* $X=\bar X$
+* $X \sim N(\mu,\sigma_X^2)$
+* $\bar X \sim N(\mu, \sigma_{\bar X}^2)$
+
+## Estimating Population Parameters
+
+* If we know $\mu$ and $\sigma$ we can directly calculate $\mu_{\bar x}$ and $\sigma_{\bar x}$
+* But what if we don't know anything about the underlying population except what we have in our sample?
+   * This is the case you'll typically encounter
+* How would we estimate $\mu$ and $\sigma$?
+
+## Estimating Population Mean
+
+* If we don't know $\mu$, but we have a sample from X, why not just estimate $\hat \mu = \bar x$?
+    * Question: will we be correct on average? i.e. will $E[\hat \mu] = \mu$?
+    * If this property holds we say that the estimate is **unbiased**
+* Is $\hat\mu=\bar x$ unbiased?
+* We previously calculated $E[\bar X] = E[X]=\mu$, so we're good
+
+## Estimating Population Variance
+
+* What about $\sigma^2$? Can we use $\hat\sigma^2_x = \sigma^2_{\bar x}$?
+* $E[\sigma^2_{\bar x}] = E[\frac{(X_1-\bar x)^2 + (X_2-\bar x)^2 + ... + (X_n - \bar x)^2}{n}]$
+* $=\frac{1}{n}E[(X_1 - \mu + (\bar x - \mu))^2 + ... + (X_n - \mu - (\bar x - \mu))^2]$
+* $=\frac{1}{n}E[\sigma^2 - (\mu - \bar x)^2 + ... + \sigma^2 - (\mu - \bar x)^2]$
+* $=\frac{1}{n}E[n\sigma^2 -n(\mu - \bar x)^2]=\frac{1}{n}(n\sigma^2 - \frac{n\sigma^2}{n})=\frac{n-1}{n}\sigma^2$
+
+## Estimating Population Variance
+
+* Since $E[\sigma^2_{\bar x}] \neq \sigma^2$ this is a biased estimate. We see we were off by a factor of $\frac{n-1}{n}$
+* We can just correct this by applying a factor of $\frac{n}{n-1}$, which is the same as dividing by n-1
+* Then $s=\frac{\sum (x_i-\bar x)^2}{n-1}$ is an unbiased estimate of $\sigma^2$
+    * This is called the sample standard deviation for this reason, instead of the population standard deviation
+
+## Sample standard deviation
+
+* Proof of bias when using the population variance formula is tricky
+* Intuition: If we knew $\mu$ and calculated $\hat\sigma^2=\frac{(X_1-\mu)^2+...+(X_n-\mu)^2}{n}$ we would get an unbiased answer
+* But we need to estimate $\bar x$ from the same data before calculating $\hat\sigma^2$. This leads to an extra "degree of freedom" in our estimation
+    * In general we'll often find that we divide by $(n-k)$ rather than $n$ when we have $k$ degrees of freedom
+    
+    
+## Estimating a sampling distribution
+
+* Given a sample, this now implies a general algorithm for getting the sampling distribution
+* First, calculate the sample mean and sample standard deviation
+* Now, as long as n is large enough, $\bar x \sim N(\bar x,\frac{s}{\sqrt{n}})$
+* Then, we calculate probabilities:
+    * Transform x values to z values using $z=\frac{x-\bar x}{s}$. Then $Z \sim N(0,1)$
+    * Look up the value in a standard normal table to get $P(Z \le z)$
+    
+## Estimating a Proportion
+
+* Typically we have treated X as a number, e.g. the number of students who are econ majors
+* But we can also directly use the proportion rather than raw number: $\hat p=\frac{X}{n}$
+* How to calculate $E[\hat p]$ and $var(\hat p)$?
+
+## Estimating a Proportion
+
+* $E[\hat p]=E[\frac{X}{n}]=\frac{\mu_X}{n}$
+    * If given raw data, $\hat p$ is an unbiased estimator
+* $var(\hat p)=var(\frac{X}{n})=\frac{1}{n^2}var(X)=\frac{\sigma_X^2}{n^2}$
+    * But $var(X)=np(1-p)$, so $var(\hat p)=\frac{\hat p(1-\hat p)}{n}$
+    * So that $\sigma_{\hat p}=\sqrt{\frac{\hat p(1-\hat p)}{n}}$
+    
+## A note on Terminology
+
+* Let $\hat\theta$ be a general statistic for the population parameter $\theta$. Then we call $\sigma_{\hat\theta}$ the **standard error** of $\theta$
+    * $\sigma_{\hat p}=SE(\hat p)=\sqrt{\frac{\hat p(1-\hat p)}{n}}$
+* This just makes it easier to differentiate between the standard deviation of the underlying population, and the standard deviation of our estimate of the mean (the standard error)
+    
+## A note on Proportions
+
+* Suppose our raw data consisted of a 1 for a success and 0 for a failure. Could we compute $\bar x$ and $s$ rather than $\hat p$ and $\sqrt{\hat p(1-\hat p)}$?
+* $\bar x$ and $\hat p$ are identical. $s$ and $\sqrt{\hat p(1-\hat p)}$ are slightly different
+    * If we know that our process follows a binomial distribution, $\sqrt{\hat p(1-\hat p)}$ is very slightly more efficient
+    * In practice if we calculate the standard deviation of the raw indicator data we'll get almost the same answer
+    
+## Example
+
+* You are trying to estimate the unemployment rate. Due to recent government budget cuts, you are only able to survey 1000 individuals. 5 Percent of your respondents are unemployed. Calculate the following:
+    * $\mu_{\hat p}$
+    * The standard error of $\hat p$, $\sigma_{\hat p}$
+    * The probability that $\hat p$ is between .04 and .06
+    
+## Table
+
+```{r}
+library(data.table)
+x0 <- seq(from=-3, to=0, by=0.5)
+x1 <- seq(from=0, to=3, by=0.5)
+y0 <- round(pnorm(x0),2)
+y1 <- round(pnorm(x1),2)
+dt <- data.table(x=x0,`F(x)`=y0,`     `="     ",x=x1,`F(x)`=y1)
+dt
+```
+    
+## A note on bias
+
+* For the previous question what does $p-\hat p$ represent?
+* If $\hat p$ is unbiased, then this difference is called the **sampling error** (or sampling variation)
+* In general, $p - \hat p$ is equal to the sampling error + bias
+    * When would $\hat p$ be biased in the previous example?
+
+## Confidence Intervals
+
+* A 95\% confidence interval is an interval such that, if we repeated the data generating process many times, 95\% of the intervals would capture the true mean
+* To construct, just calculate $\hat p \pm z_.975 SE(\hat p)$
+    * $z_.975\approx1.96$
+* This *approximately* means that there is a 95\% chance that the true mean is contained in this interval (though really we can interpret the process in a probabilistic nature)
+
+## Confidence Interval Example
+
+* On Monday you find that 60\% of your students show up to class. Your class has a total of 30 students. Calculate a 95\% confidence interval for the percent of students who show up to class.
+
+## Table
+
+```{r}
+x0 <- c(.9,.95,.975,.99,.995)
+y0 <- round(qnorm(x0),3)
+dt <- data.table(p=x0,`x:p=F(x)`=y0)
+dt
+```
+
+## Confidence Interval Conceptual Questions
+
+\bsmall
+
+
+A 90\% confidence interval for attendance is approximately (.45,.75). Which of the following interpretations is correct:
+
+## Confidence Interval Conceptual Questions
+
+* A We are 90\% confident that between 45 and 75 percent of students attended class on Monday
+* B 90\% of our class attends class between 45 and 75 percent of the time
+* C We are 90\% confident that the true percent of students who attend class on a given day is between 45\% and 75\%, in the sense that 90\% of all such confidence intervals would have this property
+* D There is a 90\% chance that if we repeat this process on Wednesday that $\hat p$ will be between 45\% and 75\%
+
+\esmall
+
+## Hypothesis Testing
+
+* The confidence interval gives us precision about estimates, but we can also now formally test different hypotheses using a very similar methodology
+* In hypothesis testing, we will have a default view of the world (the null hypothesis), and we will use data to test whether or not this is consistent with reality
+* We can use this to rule out certain possibilities, but never to prove anything
+
+## Hypothesis Testing Example
+
+* You give a multiple choice question with 4 possible answers on an exam. You believe that your students know nothing. Under this hypothesis, the probability that a student gives the correct answer is 25\%, and each student's answers are independent
+* You collect the actual test responses to test whether your hypothesis is reasonable. You have the alternative hypothesis that students actually understand the material (so that $p>.25$)
+
+## Hypothesis Testing Example
+
+* 29 out of 100 students get the answer correct
+* If each student randomly guessed, what would be the probably that at least this many students got the answer correct?
+
+## Hypothesis Testing Example
+
+* In the prior example, we computed the **conditional probability of observing the data, given the null hypothesis**. This is called the **p value**
+* If our p value is high, then we do not have strong evidence to reject our null hypothesis (i.e. our null hypothesis is consistent with our data)
+    * The threshold we compare to is called the **significance level** and is labeled $\alpha$
+    * Typically $\alpha=.05$ or $\alpha=.01$
+    
+## Hypothesis Testing Framework
+
+Which of the following could we support from this experiment?
+
+* None of the students knew the answer to the question
+* 29 percent of the students knew the answer to the question
+* It is likely that no student knew the answer
+* We can't rule out the possibility that no student knew the answer
+* There is evidence that some students may have known the answer
+
+## Hypothesis testing framework
+
+* If $p<\alpha$ we **reject** the null hypothesis
+* If $p>\alpha$ we **fail to reject** the null hypothesis
+* We never accept the null hypothesis nor do we reject the alternative hypothesis
+* When is this appropriate? When is it inappropriate?
+
+## Errors in hypothesis testing
+
+* We have 4 possible combinations: we can either reject or fail to reject the null hypothesis, and the null hypothesis can either be true or false:
+* Reject when null is true: Type I Error (false positive)
+* Reject when null is false: correct
+* Fail to reject when null is true: correct
+* Fail to reject when null is false: Type II Error (false negative)
+
+## Errors in hypothesis testing
+
+* Type I errors occur at a rate of $\alpha$, i.e. typically 1 or 5 percent of the time
+* Type II error rates are difficult to calculate. Generally **much** higher than 5\%
+
+## Jury analogy
+
+* In a criminal jury trial in the US, the defendent is presumed innocent until proven otherwise
+* All 12 jurors are required to vote 'guilty' to receive a guilty verdict, otherwise they are 'not guilty'
+     * They are never found innocent
+* OJ Simpson was found not guilty in a criminal court. He was found guilty in a civil trial.
+     * A civil trial only requires a preponderance of the evidence
+     
+## Hypothesis testing rationale
+
+* Hypothesis testing is rooted in scientific skepticism. We require strong evidence to believe extraordinary claims
+* Suppose an individual wants to test whether climate change is real. They assume the null hypothesis that there is no climate change. They use an $\alpha=.001$. What will the result be?
+* What if someone instead assumed a null hypothesis that there is an upward trend in global temperatures?
+
+## Hypothesis Testing Setup
+
+* You want to test whether a coin is fair. Write the null and alternative hypothesis for this setup
+* Suppose that after collecting data you obtain a p-value of $0.03$. What would be your conclusion if $\alpha=.05$? $\alpha=.01$?
+
+## Hypothesis Testing Interpretation
+
+You run the test from the previous slide. Which of the following conclusions are valid?
+
+* There is only a 3\% chance that the coin is fair
+* If $\alpha=.05$ we conclude that the coin is likely not fair
+* If $\alpha=.01$ we conclude that the coin is likely fair
+* There is only a 3\% chance of obtaining results this extreme if the coin were fair. Whether this is strong enough evidence against the coin being fair depends on whether $\alpha=.05$ or $\alpha=.01$
+
+## Statistical vs Practical Significance
+
+* If a result has a p-value below $\alpha$, it is said to be statistically significant
+    * This just means that it is improbable under a null model
+* If we have a very large sample size, even tiny effects can (and often are) statistically significance
+* On the other hand, massive effects can lack statistical significance, particularly if we have a small sample size.
+    * The power of a test is how large of an effect size can be detected

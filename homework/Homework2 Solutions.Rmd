@@ -1,0 +1,100 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+knitr::opts_chunk$set(comment = "")
+```
+
+## Econ 270 Homework 2
+
+## Combinatorics
+
+You toss a coin 5 times. What is the probability of obtaining exactly 3 heads?
+
+$\frac{{5 \choose 3}}{2^5}=\frac{10}{32}=.3125$
+
+How many ways can you rearrange the letters in 'chocolate'?
+
+$\frac{9!}{2!2!}=90720$
+
+Moderately hard: There are 23 people in a room. What is the probability that a birthday is shared among at least two people in the room?
+
+$1-\frac{_{365}P_{23}}{365^{23}}=1-\frac{365!}{23!365^{23}}=.4927$, which uses permutations in both the numerator and denominator (i.e. order matters)
+
+Alternatively, $1-\frac{{365 \choose 23}}{\frac{365^{23}}{23!}}$ which uses combinations in both the numerator and denominator (order doesn't matter)
+
+book problems: 4.21, 4.25, 3.24
+
+
+### 3.24
+
+a: Counting approach: $\frac{{4 \choose 2}}{{12 \choose 2}}=\frac{1}{11}$. Independent sequence approach: $\frac{4}{12}*\frac{3}{11}=\frac{1}{11}$
+
+b: $\frac{{7 \choose 2}}{{12 \choose 2}}\approx .318$
+
+c: $1-\frac{{9 \choose 2}}{{12 \choose 2}}=\frac{5}{11}$
+
+d: 0
+
+e:Counting (and using C notation due to rendering issues): $\frac{_4C_2 + _5C_2 + _3C_2}{_{12}C_2}=\frac{19}{66}\approx .2879$. Independence: $\frac{4}{12}*\frac{3}{11} + \frac{5}{12}*\frac{4}{11}+\frac{3}{12}\frac{2}{11}=\frac{19}{66}\approx .2879$
+
+Hard: A derangement is a permutation such that none of the elements are in their original order. How many derangements are there of 4 items? [hint: the general solution uses recursion]
+
+Suppose we're solving the case with n elements, but already know the number of derangements for (n-1) and (n-2). First, if we start with a derangement of the (n-1) elements, then when we add a new element, we can swap the new element with any existing elements to obtain a derangement. Letting $d(n)$ denote the number of derangements from n elements, this gives $(n-1)*d(n-1)$ possible derangements. We aren't done yet, however, because we can also make a derangement if we don't start from an existing derangement. for this to be the case, we would need to be 'off by one', then swap with the in-place element. This leaves d(n-2) as the starting value, times (n-1) possible elements to be in place. This gives the recurrence relation $d(n) = (n-1)d(n-1) + (n-1)d(n-2)$. Finally, we can list off the easier cases:
+
+* d(1) = 0 (this is automatically ordered)
+* d(2) = 1 (the permutation from (a,b) to (b,a))
+* d(3) = (3-1)d(2) + (3-1)d(1) = 2
+* d(4) = (4-1)d(3) + (4-1)d(2) = 9
+
+## Basic probability
+
+3.2, 3.5, 3.6, 3.10, 3.12, 3.23,
+
+
+### 3.2
+
+a: $\frac{18}{38}$ b: $\frac{18}{38}$ c: This isn't a bayesian textbook, so I think the answer they're looking for is that you're equally confident due to independence. Personally I'd be less confident, because if it lands on red 300 times then your posterior expectation that the wheel is rigged or is in some way biased increases
+
+### 3.6
+
+a: 0 b: $\frac{4}{36}$ c: $\frac{1}{36}$. This is calculated from the triangle distribution we derived in class (list out the full 6x6 grid of dice rolls: any specific sum is on the diagonals)
+
+### 3.10
+
+a: This means that she gets the first 4 wrong and the fifth question right. This is just $(\frac{3}{4})^4(\frac{1}{4})\approx .079$. b: $(\frac{1}{4})^5=\frac{1}{1024}\approx 0.1\%$ c: $1-(\frac{3}{4})^5\approx 0.76$
+
+### 3.12
+
+a: $1-.25-.15-.28=.32$ b: $.32+.25=.57$ c: $.25+.15+.28=.68$ (or $1-(a)$) d: $.32^2=.1024$. This requires independence, which is a very bad assumption here (contagious illness would be one possible violation). e: $(1-.32)^2=.4624$. Same assumption. f: see (d)
+
+## Probability Definitions
+
+3.1, 3.7, 3.9
+
+## Conditional Probability
+
+You are presented with 3 boxes. One contains two gold coins, one contains two silver coins, and one contains one gold coin and one silver coin. You randomly choose a coin and observe that it is a gold coin. What is the probability that the other coin in the box is a gold coin?
+
+Each coin is equally likely, with 3 gold coins. Box 1 has 2 gold coins, so there is a $\frac{2}{3}$ chance we chose box 1. Box 2 has 1 gold coin, so there is a $\frac{1}{3}$ chance we chose box 2. Box 2 has 0 gold coins, so we did not choose it. In order for the other coin in the box to be gold, it must be the case that we chose box 1. But the probability that this happens is $\frac{2}{3}$. This is called Bertrand's paradox - most people who are unfamiliar with conditional probability will incorrectly answer $\frac{1}{2}$
+
+3.11, 3.14, 3.15, 3.25
+
+### 3.14
+
+$P(J|P) = \frac{P(J\cap P)}{P(P)}=\frac{.78}{.8}=.975$
+
+## Bayes Theorem
+
+A cancer test correctly predicts that you have cancer 99\% of the time for individuals with cancer, and correctly predicts that you don't have cancer 99\% of the time for individuals who don't have cancer. Suppose that 1\% of the population has cancer. You take a cancer test, and the test tells you that you have cancer. What is the probability that you have cancer?
+
+Let C refer to the event that you have cancer, and T refer to testing positive for cancer. You are given $P(T|C)=.99$, $P(T|C')=.01$, and $P(C)=.01$. We want $P(C|T)$
+
+$P(C|T)=\frac{P(C\cap T)}{P(T)}=\frac{P(T|C)P(C)}{P(T|C)P(C)+P(T|C')P(C')}=\frac{.99*.01}{.99*.01 + .01*.99}=\frac{1}{2}$
+
+The general idea here is that while you only have a 1\% chance of testing positive for cancer if you don't have it, there are nearly 100 times as many people without cancer as those with it, which will drastically increase the false positive rate. This is exactly the reason why mammograms are no longer recommended for young women  as part of a routine screen unless they're specifically at risk for breast cancer.
+
+3.19b

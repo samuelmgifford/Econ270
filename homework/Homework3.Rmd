@@ -1,0 +1,72 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+knitr::opts_chunk$set(comment = "")
+```
+
+## Econ 270 Homework 3
+
+## Expectation
+
+The following pmf describes the distribution of weights of fresh black truffles in grams. Calculate the expected cost of a randomly selected black truffle if truffles cost \$100 per ounce (there are 28 grams in an ounce)
+
+$p(14)=.1, p(21)=.15, p(28)=.5, p(35)=.15, p(42)=.1$
+
+Suppose that $E[X]=10$ and $E[Y]=-5$. Calculate $E[2X+3Y]$
+
+Book Questions: 
+
+3.31, 3.33, 4.15
+
+## Variance
+
+Let X be a random variable with $E[X]=1,var(X)=1$. Let $X_1,X_2,X_3$ be independent random variable with the same distribution as X. Calculate $var(X_1+X_2+X_3)$ and $var(3X)$
+
+The standard deviation of height in adult males is 3 inches. Calculate the variance of height in centimeters.
+
+You are given that X and Y are independent with $var(X)=1, var(Y)=1$. Calculate $var(X-Y)$
+
+You are given that $E[X]=5,E[Y]=10,var(X)=2,var(Y)=3,cov(X,Y)=-1$. Calculate $var(2X-3Y)$
+
+You are given the following joint probability mass function for x and y, $p(x,y)$: $p(0,0)=.1, p(1,0)=.3, p(0,1)=.5,p(1,1)=.1$. Calculate the following:
+
+* $E[X], E[Y]$
+* $E[X^2], E[Y^2]$
+* $var(x), var(y)$
+* $E[XY], cov(X,Y), \rho_{xy}$
+
+[hard] The returns of a specific stock has variance of 9, while the returns on a bond has variance 4. The correlation coefficient between the two is -0.5. You own one unit of the stock. Calculate the number of bonds you must purchase to minimize your total portfolio variance
+
+Book Questions: 
+
+3.34, 3.35, 3.43, 3.44, 4.16, 4.19a
+
+The following are more abstract, but very useful going forward: 3.45,3.46,3.47
+
+## CDF
+
+A distribution has CDF $F(x)=1-e^{-x}$. Calculate the median of X
+
+A distribution has CDF $F(x) = 1-(\frac{2}{x})^2$ for $x \ge 2$. Calculate the interquartile range
+
+[moderately hard] X is a distribution with CDF $F(x)=x, 0 \le x \le 1$. Calculate the probability that the maximum from a sample of two from this distribution is at least 0.75, i.e. $P(max(X_1,X_2) \ge .75)$
+
+Book Questions: 
+
+3.37, 3.38
+
+## Normal Distribution
+
+Book Questions: 
+
+4.1 (no need to draw a graph), 4.3, 4.5, 4.6, 4.7, 4.10, 4.37
+
+## Binomial Distribution
+
+Book Questions: 
+
+4.17, 4.21, 4.22

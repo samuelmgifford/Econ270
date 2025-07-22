@@ -1,0 +1,90 @@
+---
+title: "Econ 270 Lecture 9"
+author: "Sam Gifford"
+date: "2025-04-28"
+output:
+  beamer_presentation: default
+  powerpoint_presentation: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+knitr::opts_chunk$set(comment = "")
+```
+
+## Confidence Intervals and Hypothesis Tests Summary
+
+* We often want to estimate a parameter from a sample, i.e. we estimate $\mu$ from $\bar x$
+* We can use the statistical properties of samples to construct a standard error and confidence interval
+* We can also formally test whether a parameter is equal to some value
+    * In the case of joint tests, we won't have a standard error or confidence interval, but can still conduct a hypothesis test
+    
+## Confidence Intervals
+
+* We estimate the unknown parameter $\mu$ using $\bar x$
+* The standard error $\sigma_{\bar x}$ is the standard deviation of the sampling distribution
+    * The abstract process that generates the sample mean
+* The 95\% confidence interval is constructed such that 95\% of all confidence intervals will contain the true mean
+    * $\bar x \pm z_{\alpha/2} \sigma_{\bar x}$
+    
+## Standard error formulas
+
+* Always of the form $\sigma_{\bar x}=\frac{s}{\sqrt n}$. This is directly used in a single mean
+* Single proportion: $\sqrt{\frac{\hat p(1-\hat p)}{n}}$
+* Difference in means: $\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$
+* Difference in proportions: $\sqrt{\frac{\hat p_1(1-\hat p_1)}{n_1}+\frac{\hat p_2 (1- \hat p_2)}{n_1}}$
+
+## Critical Value
+
+* For proportion and differences in proportions, we get $z_{\alpha/2}$ from a standard normal table
+    * $95\%$ corresponds to $.975$
+* For means and differences in means, we instead use a t-distribution with $n-1$ (or $(n_1-1)+(n_2-1)$) degrees of freedom
+    * If n is large, we can just use a standard normal table
+   
+## Hypothesis Testing
+
+* We always set up a null hypothesis to start
+    * $H_0: \mu=0; \ \mu_1=\mu_2;\  p_1=p_2;\  p_1=.5;\ \mu_1=\mu_2=\mu_3$
+* The alternative hypothesis is always the negation of the null hypothesis for a two-tailed test
+* We calculate a p-value: the probability of observing a result at least as extreme as what we observed if the null hypotheis were true
+* Compare to $\alpha$. Either reject or fail to reject
+   * Results in either a type I or type II error (or a correct decision)
+
+## Hypothesis Testing Steps
+
+* In hypothesis testing, we first calculate a test statistic
+* For univariate tests: $\frac{\hat \theta-\mu_0}{\sigma_{\hat \theta}}$
+    * i.e. the standardized point estimate. $\mu_0$ is the null hypothesis, $\sigma_{\hat \theta}$ is the standard error
+* Chi-square: $\sum \frac{(observed-expected)^2}{expected}$
+* F: $\frac{MSG}{MSE}=\frac{\frac{1}{k-1}\sum n_i(\bar x_i -  \bar x)^2}{\frac{1}{n-k}\sum (n_i-1) s_i^2}$
+
+## P-values
+
+* Proportions use a standard normal table. Means use a t-table
+* chi-square and F use a table with only 1 tail
+
+## An Intentionally Blank Slide
+
+## A basic Z Table
+
+```{r}
+library(data.table)
+library(ggplot2)
+x0 <- seq(from=-3, to=0, by=0.5)
+x1 <- seq(from=0, to=3, by=0.5)
+y0 <- round(pnorm(x0),2)
+y1 <- round(pnorm(x1),2)
+dt <- data.table(x=x0,`F(x)`=y0,`     `="     ",x=x1,`F(x)`=y1)
+dt
+```
+
+## Candy!
+
+```{r}
+xx <- t(matrix(c(7,4,7,18,2,6,6,14,3,2,4,9,4,5,1,10,16,17,18,51),c(4,5)))
+rownames(xx) <- c("SK","MP","WB","SO","Tot")
+colnames(xx) <- c("Bag1","Bag2","Bag3","Tot")
+xx
+```

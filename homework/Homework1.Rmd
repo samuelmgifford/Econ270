@@ -1,0 +1,143 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+knitr::opts_chunk$set(comment = "")
+```
+
+## Econ 300 Homework 1
+
+Note: for book exercises, solutions are in appendix A. Exercises 2.25 and 2.26 are good holistic examples, but a bit difficult for this course. The "chapter exercises" for chapter 2 are similarly good but somewhat difficult questions.
+
+## General data literacy (1.2.2)
+
+The following book questions are examples of categorization of variables
+
+1.3c, 1.4c, 1.5c, 1.6c, 1.10c, 1.11b 1.12b
+
+## Quantiles and Boxplots (2.1.5)
+
+Find the median, first quartile, third quartile, and interquartile range of the following list
+
+```{r}
+set.seed(1)
+x <- c(12,3,7,1,6,5,3,8,8)
+cat(x)
+```
+
+
+Find the median, first quartile, third quartile, and interquartile range of the following box plot
+
+```{r,out.width="75%"}
+library(ggplot2)
+library(scales)
+library(data.table)
+set.seed(1)
+y <- rnorm(100,mean=50,sd=15)
+ggplot(data=data.table(y),aes(y=y)) + geom_boxplot() + theme_bw() + scale_y_continuous(breaks=pretty_breaks(10),minor_breaks=pretty_breaks(20))
+```
+
+Book Problems: 2.8
+
+\newpage
+
+## Histograms (2.1.3)
+
+The following histogram has 100 total values. What percent of the data is between 30 and 40?
+
+```{r,out.width="75%"}
+hist(y,n=10)
+```
+
+What features are present in the following histogram? 
+
+```{r, out.width="75%"}
+x <- c(rgamma(100,1,1),rnorm(50,mean=5,sd=0.5))
+hist(x,n=20)
+```
+
+\newpage 
+
+For the following distribution, which is larger, the mean or the median?
+
+```{r,out.width="75%"}
+x <- c(rgamma(100,1,1))
+hist(x,n=20)
+```
+
+Book Problems: 2.15, 2.16 2.14 (this one pieces together information from multiple sections)
+
+## Mean (2.1.2)
+
+Calculate the mean of the following data, where p is the proportion of data associated with each value
+
+```{r}
+data.table(x=c(1,2,3,4,5),p=c(.1,.2,.5,.15,.15))
+```
+
+
+Suppose that an outlier is added to a dataset. Which is more affected, the mean or the median?
+
+Book Problems: 2.9
+
+## Variance (2.1.4)
+
+Calculate the (population) standard deviation of the following data
+
+```{r}
+cat(c(5,10,12))
+```
+
+The ACT is a standardized test with mean 18 and standard deviation 6. You score a 27 on the ACT. Calculate your z-score, i.e. your standardized test score
+
+\newpage
+
+Which of the following distributions has a larger standard deviation?
+
+```{r}
+x <- rnorm(1000)
+y <- rnorm(1000,sd=2)
+
+ggplot(data=data.table(x,y)) + geom_density(aes(x=x),color='red') + geom_density(aes(x=y),color='blue')+theme_bw() 
+```
+
+## Contingency Tables (2.2.1)
+
+The following (made-up) table gives the joint distribution of econ majors (vs non-econ majors) and whether they are a dog or a cat person. 
+
+* What percent of people prefer dogs?
+* What percent of people are non-econ majors who prefer cats?
+* Of people who are econ majors, what percent prefer dogs?
+* Of people who prefer dogs, what percent are econ majors?
+
+```{r}
+tbl <- matrix(c(25,15,40,20,40,60,65,35,100),c(3,4))
+rownames(tbl) <- c("Econ","Other","Total")
+colnames(tbl) <- c("Dog","Cat","Total")
+tbl
+```
+
+Book Problems: 2.22 (e is difficult)
+
+\newpage
+
+## Scatterplots (2.1.1)
+
+Is the correlation between the following variables positive, negative, or approximately 0?
+
+```{r}
+x <- rnorm(100)
+y <- -0.5*x + rnorm(100,sd=.5)
+ggplot(data=data.table(x,y),aes(x=x,y=y)) + geom_point() + theme_bw()
+```
+
+Suppose $r=-0.9$. What percent of the variation in y is explained by x?
+
+Book problems: 2.1, 2.2, 2.4 (positive vs negative association)
+
+## Graphical Comparison (2.2.6)
+
+Book problems: 2.10, 2.13

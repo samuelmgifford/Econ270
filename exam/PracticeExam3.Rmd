@@ -1,0 +1,316 @@
+---
+title: "Econ 270 Section 16815 Final Exam"
+author: "University of Illinois at Chicago"
+date: '2025-05-05'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+Name: _________________________________________________
+
+## Instructions
+
+Please read the following before starting the exam:
+
+1. The exam is worth 200 points and consists of <?> multiple choice questions and <??> free response questions. Point values are included next to questions - please allocate your time appropriately
+2. There is a blank page on the back of the last sheet that you may use if you run out of room writing any questions - just label appropriately so that I can follow your work
+3. You must show all your work to receive partial credit for incorrect answers.
+4. You may not communicate with classmates or other people about the exam.
+5. Laptops, phones, and other electronics devices are not allowed during the exam. You may use a calculator.
+6. Numeric answers may either be written as a decimal or as a reduced fraction
+7. The exam is due at the end of class. No exams will be accepted after this time.
+
+\newpage
+
+## Question 1 (10 points)
+
+You reject the null hypothesis for a test. If you're wrong, what type of error did you make?
+
+* A A type I error
+* B A type II error
+* C A type III error
+* D A type-o error
+
+## Question 2 (10 points)
+
+You construct a 95\% confidence interval for the mean of an exam as (75,85). How do you interpret this?
+
+* A There is a 95\% chance that your sample mean is between 75 and 85
+* B 95\% of individuals have an exam score between 75 and 85
+* C If you construct a confidence interval from a new sample, there's a 95\% chance your exam average would be between 75 and 85
+* D You are 95\% confident that the true exam mean is inside this interval
+
+
+## Question 3 (10 points)
+
+You are testing whether the average exam scores of men and women are equal. You run a formal hypothesis test using $\alpha=.05$ and obtain a p value of 0.2. Which of the following is a correct conclusion under the null hypothesis significance testing framework?
+
+* A There is no difference in test scores between men and women
+* B There is a difference in test scores between men and women
+* C The data is consistent with the hypothesis that men and women have equal test scores
+* D The data is consistent with the hypothesis that men and women have different test scores
+
+
+## Question 4 (10 points)
+
+When should you use a t-table when testing for differences-in-means?
+
+* A You can always use a t-table
+* B You only use the t-table when your sample size is large
+* C You can only use a t-table when your underlying population is normally distributed
+* D You can only use a t-table when your data is heteroskedastic
+
+
+## Question 5 (10 points)
+
+What is true of the standard error?
+
+* A The standard error is the standard deviation of our point estimate
+* B The standard error is generally much smaller than the population standard deviation
+* C Under independence, the standard error can be obtained by dividing the population standard deviation by the square root of the sample size
+* D All of the above
+
+## Question 6 (10 points)
+
+Which of the following is true regarding the chi-square and F tests?
+
+* A The chi-square test requires constant variance while the F test does not
+* B Both tests use sum of squared errors to calculate their test statistics
+* C The F-test can be used to test independence while the chi-square test is used to test equality of means
+* D The two tests can be used interchangeably
+
+
+## Question 7 (10 points)
+
+How can you increase the power of a hypothesis test?
+
+* A increase $\alpha$
+* B decrease the sample size
+* C increase the population standard deviation
+* D decrease the population mean
+
+## Free Response
+
+## Question 8 (20 points)
+
+You randomly sample from a population X with distribution $X \sim N(\mu=30,\sigma=10)$. You take a simple random sample of size 100 from X and calculate the mean: $\bar X$
+
+### a
+
+Calculate the standard deviation of $\bar X$
+
+\
+\
+\
+\
+\
+
+
+### b
+
+Calculate the 95th percentile of the distance that $\bar x$ is from $\mu$, i.e. the value of k such that $P(|\bar x -\mu|\le k)=.95$
+
+\
+\
+\
+\
+
+
+## c
+
+What does it mean for $\bar x$ to be unbiased, and how does this relate to your calculate in part b?
+
+\
+\
+\
+\
+
+
+
+## Question 9 (15 points)
+
+### a
+
+You run an F-test and get the following output
+
+```{r}
+library(data.table)
+set.seed(1)
+dt <- data.table(x=as.factor(rep(1:5,each=20)),y=rnorm(100))
+summary(aov(data=dt, y ~ x))
+```
+
+How many observations are in your data, and how many groups are you comparing?
+
+\
+\
+\
+\
+
+
+### b
+
+What is your null hypothesis? Do you reject it?
+
+\
+\
+\
+\
+
+
+### c
+
+Suppose you reject the null hypothesis. What additional assumption must hold beyond independence in order for you to conclude that there are mean differences across the groups?
+
+\
+\
+\
+\
+
+
+
+\newpage
+
+## Question 10 (15 points)
+
+You poll 100 men and find that 60\% prefer chocolate ice cream to vanilla, while a separate poll of 100 women finds that 50\% prefer chocolate ice cream to vanilla.
+
+### a
+
+Suppose you want to test the hypothesis that men and women have the same preference for ice cream. Write down the null hypothesis in symbols
+
+\
+\
+\
+\
+
+
+## b
+
+Calculate the relevant standard error for your test above
+
+\
+\
+\
+\
+
+
+## c
+
+Compute a 95\% confidence interval for the difference in proportions for men and women
+
+\
+\
+\
+\
+
+
+## d
+
+What do you conclude from this data using $\alpha=.05$?
+
+\
+\
+\
+\
+
+
+\newpage
+
+## Question 11 (20 points)
+
+You have yearly annual returns for the stocks of publicly traded companies. You want to see if companies that change their board of directors during a year have different returns compared to companies who have no board turnover. You obtain the following data regarding the means and standard deviations of returns for each class of companies
+
+```{r}
+structure(list(board_change = 0:1, return = c(0.1497, 0.1555), 
+    sd = c(0.474, 0.464), N = c(27558L, 27746L)), row.names = c(NA, 
+-2L), class = c("data.table", "data.frame"), sorted = "board_change")
+```
+
+Calculate the p-value for this hypothesis test.
+
+\newpage
+
+## Question 12 (30 points)
+
+Your company sells 5 different product lines. Your marketing team sends out a survey, and you're interested if the survey responses are representative of your overall product distribution. The table of total product sales and survey responses by type are listed below. Conduct a test to determine if the survey is from a representative sample (i.e. does it come from the target distribution)
+
+```{r}
+dt <- data.frame(A=c(.2,10),B=c(.3,20),C=c(.15,5),D=c(.05,3),E=c(.3,25))
+rownames(dt) <- c("Sales Percent","Survey Count")
+dt
+```
+
+\
+\
+\
+\
+\
+\
+
+
+## Question 13 (30 points)
+
+Test for independence in the following contingency table
+
+```{r}
+a <- c(25,10,10,45)
+b <- c(30,17,13,60)
+c <- c(10,4,6,20)
+total <- a+b+c
+dt <- data.frame(a,b,c,total)
+rownames(dt) <- c("a","b","c","total")
+dt
+```
+
+
+\
+\
+\
+\
+\
+\
+
+## Extra Credit
+
+### 1
+
+Income in a particular subpopulation of the US has mean of \$98000 and standard deviation of \$28000. You want to conduct a survey where the width of your 95\% confidence interval for the mean is \$1000. How many individuals must you sample to achieve this?
+
+\
+\
+\
+\
+
+
+### 2
+
+You run a paired t-test for 10 individuals with the following differences and the corresponding mean and standard deviation
+
+```{r}
+difference <- abs(rnorm(10,sd=.1))
+round(difference,2)
+round(mean(difference),2)
+round(sd(difference),2)
+```
+
+You notice that each of the 10 differences is positive. What is the probability that this would happen by chance if the two means were equal (and assuming independence)? How does this compare with the p-value for the t-test?
+
+\
+\
+\
+\
+
+
+### 3
+
+You are a Ph.D. student in economics. You just received access to data on an experimental study, but due to a miscoding, your column indicating treatment is actually just a randomly generated variable. You can only graduate if you obtain a statistically significant result, so you calculate the mean difference between 'treated' and untreated groups for 100 different outcomes variables, and report any results that are significant at the $\alpha=.05$ level. What is the probability that you obtain a statistically significant result and graduate?
+
+\
+\
+\
+\

@@ -1,0 +1,29 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+knitr::opts_chunk$set(comment = "")
+```
+
+## Econ 270 Homework 4
+
+## Sampling Distributions
+
+These questions are all pretty solid
+
+Book Questions: 5.3, 5.4, 5.5, 5.6
+
+## Confidence Intervals
+
+5.9 and 5.11 are good conceptual questions to check, 5.13 and 5.14 are good computational questions
+
+5.7, 5.8, 5.9, 5.10, 5.11, 5.13 (b,c), 5.14 , 5.28
+
+## Hypothesis Testing
+
+5.22 is a good representative easy question. 5.25, 5.29, 5.30, and 5.35 are good conceptual questions
+
+5.15, 5.16, 5.17 (you should immediately spot several catastrophic issues), 5.22 , 5.23 (this is moderately hard), 5.25, 5.29, 5.30, 5.35

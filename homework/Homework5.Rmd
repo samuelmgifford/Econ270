@@ -1,0 +1,27 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+knitr::opts_chunk$set(comment = "")
+```
+
+## Econ 270 Homework 5
+
+## General Hypothesis Testing
+
+5.15, 5.17, 5.25, 6.4 c,d,e, 
+
+## Hypothesis Tests for Proportions
+
+5.21,  5.37
+
+## Power
+
+5.23 (this one is a bit abstract), 5.35, 6.15
+
+## Difference in Proportions
+
+6.19 (good conceptual question), 6.20, 6.21, 6.23, 6.30

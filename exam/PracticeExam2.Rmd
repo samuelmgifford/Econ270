@@ -1,0 +1,215 @@
+---
+title: "Econ 270 Section 16815 Exam II"
+author: "University of Illinois at Chicago"
+date: '2024-03-16'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+Name: _________________________________________________
+
+## Instructions
+
+Please read the following before starting the exam:
+
+1. The exam is worth 200 points and consists of <?> multiple choice questions and <??> free response questions. Point values are included next to questions - please allocate your time appropriately
+2. There is a blank page on the back of the last sheet that you may use if you run out of room writing any questions - just label appropriately so that I can follow your work
+3. You must show all your work to receive partial credit for incorrect answers.
+4. You may not communicate with classmates or other people about the exam.
+5. Laptops, phones, and other electronics devices are not allowed during the exam. You may use a calculator.
+6. Numeric answers may either be written as a decimal or as a reduced fraction
+7. The exam is due at the end of class. No exams will be accepted after this time.
+
+\newpage
+
+## Question 1 (10 points)
+
+For independent variables, $var(X-Y)$
+
+* A $=var(X)-var(Y)$
+* B $=var(X)+var(Y)$
+* C $=var(X)*var(Y)$
+* D Cannot be computed without additional information
+
+## Question 2 (10 points)
+
+If $F(x)$ is the cumulative distribution function, the 90th percentile can be calculated as
+
+* A $F(.9)$
+* B $F(.1)$
+* C x such that $F(x)=.9$
+* D x such that $F(x)=.1$
+
+## Question 3 (10 points)
+
+Which of the following is true regarding the normal distribution?
+
+* A All large populations tend towards a normal distribution
+* B If X is normal, then $Z=\frac{x-\mu}{\sigma}\sim N(\mu,\sigma)$
+* C If X is normal, then $Z=\frac{x-\mu}{\sigma}\sim N(0,1)$
+* D None of the above
+
+\newpage
+
+## Question 4 (10 points)
+
+The central limit theorem states that as the sample size grows large (with independent, identically distributed samples from a finite variance population):
+
+* A The sampling variance approach zero
+* B The sampling mean approaches the population mean
+* C The sampling distribution approaches a normal distribution
+* D The population distribution approaches a normal distribution
+
+
+## Question 5 (10 points)
+
+If the sampling distribution has $\bar X \sim N(\mu, \frac{\sigma}{\sqrt n})$ then
+
+* A $X \sim N(\mu,\frac{\sigma}{\sqrt n})$
+* B $X \sim N(\mu,\sigma)$
+* C The standard error is $\sigma$
+* D $\bar x$ is unbiased
+
+
+## Question 6 (10 points)
+
+If we calculate the mean of a sample and generate the 95\% confidence interval, this confidence interval is a statement about
+
+* A The individual sample we drew
+* B The population distribution
+* C The population mean
+* D All of the above
+
+## Question 7 (10 points)
+
+A p value of .01 means that
+
+* A There is a 1 percent chance our conclusion is incorrect
+* B There is a 1 percent chance we obtained our result by chance
+* C There is a 1 percent chance that we would obtain a result at least as extreme as the one observed by chance given the null hypothesis
+* D There is a 1% chance that the null hypothesis is true
+
+\newpage 
+
+## Free Response
+
+## Question 8 (20 points)
+
+You are given the following probability mass function:
+
+$p(0)=.05,p(1)=.15,p(3)=.35,p(4)=.2,p(5)=.1,p(6)=.15$
+
+Calculate:
+
+### a
+
+$E[X]$
+
+### b
+
+$E[X^2]$
+
+### c
+
+$\sigma_X$
+
+
+## Question 9 (15 points)
+
+You are given $E[X]=5$, $\sigma_X=2$. Let $X_i$ be independent draws from X. Calculate the following:
+
+### a
+
+$E[X_1+X_2+X_3]$
+
+### b
+
+$var(X_1+X_2+X_3)$
+
+### c
+
+$\sigma_{X_1+X_2+X_3}$
+
+### d
+
+$\sigma_{\bar X}$, where $\bar X=\frac{X_1+X_2+X_3}{3}$
+
+
+\newpage
+
+## Question 10 (15 points)
+
+A distribution has cumulative distribution function of $F(x)=1-e^{-2x}$ for $x\ge 0$. Calculate the 3rd quartile of X
+
+\
+\
+\
+\
+
+
+## Question 11 (20 points)
+
+$X \sim N(5,2)$. Calculate $P(3\le x \le 9)$
+
+
+\newpage
+
+## Question 12 (30 points)
+
+You randomly sample 25 individuals from a class and calculate their grades on an exam. You obtain the following statistics
+
+$\bar x=75, s=15$
+
+
+## a
+
+calculate the standard error of $\bar X$
+
+
+## b
+
+Calculate a 99\% confidence interval for $\bar x$
+
+## c
+
+Using the normal approximation, what is the distribution of the sampling distribution of $\bar x$?
+
+## Question 13 (30 points)
+
+Using the past 50 trading days, you observe that the stock market ended higher than it started in 70\% of the days in your sample.
+
+
+## a
+
+Calculate the standard error of $\hat p$
+
+## b
+
+Construct a 95\% confidence interval for $\hat p$
+
+## c
+
+Suppose that the true proportion $p=.5$. Calculate the probability that $\hat p\ge.7$
+
+
+
+## Extra Credit
+
+### 1
+
+You are given $E[X]=1$, $E[Y]=2$, $E[X^2]=10$, $E[Y^2]=12$, $E[XY]=5$. Calculate $var(2X-Y)$
+
+
+### 2
+
+X is a uniform distribution with CDF $F(x)=x, 0\le x\le 1$. Calculate the probability that the maximum from a sample of two is at least 0.25, i.e. $P(max(X_1,X_2)\ge.25)$ 
+
+### 3
+
+Why is $s^2$ an unbiased estimator for $\sigma^2$?
+
+
